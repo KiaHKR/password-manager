@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+.task/checksum/build
+.vscode/tasks.json

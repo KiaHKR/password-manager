@@ -15,11 +15,11 @@ private:
 public:
     PasswordManager();
     ~PasswordManager();
-    void setCredentials(std::string service, Credentials credentials);
+    void addNewCredentials();
+    void updateCredentials();
+    void deleteCredentials(std::string service, Credentials credentials);
     void displayAllServices();
     void displayOneService(std::string service);
-    void AddService(std::string service);
-    void AddCredentials();
     void getServices();
 };
 

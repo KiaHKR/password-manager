@@ -2,13 +2,18 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <ctype.h>
+#include <algorithm>
 
 using namespace std;
 
 int main()
 {
     PasswordManager pm;
-    pm.displayAllServices();
+    while(1) {
+        pm.displayAllServices();
+        pm.addNewCredentials();
+    }    
     return 0;
 }
 
@@ -51,22 +56,34 @@ void PasswordManager::displayAllServices()
     }
 }
 
-void addService(string serviceName)
-{
-    // Implementation for adding a new service
-}
-
-void PasswordManager::AddCredentials()
+void PasswordManager::addNewCredentials()
 {
     string myService;
+    cout << "Enter the Service Name: " << endl;
     getline(cin, myService);
-
-    if (services->find(myService) != services->end())
+    fflush(stdin);
+    Credentials credentials = inputCredentials(myService); // Input credentials
+    transform(myService.begin(), myService.end(), myService.begin(), ::toupper); //Transform string to upper case
+    if (services->find(myService) != services->end()) // If Service is found
     {
-        addService(myService);
+        services->at(myService).push_back(credentials); //Add credentials to pre-existing service
     }
-    else
-    {
-        Credentials myvar = inputCredentials(myService);
+    else {
+        services->insert({myService, {credentials}}); //Create new service and add the credentials to it
+    }
+}
+
+
+void PasswordManager::updateCredentials() {
+    string myService;
+    cout << "Enter Service You Want to Modify: " << endl;
+    getline(cin, myService);
+    fflush(stdin);
+    Credentials credentials = inputCredentials(myService);
+    transform(myService.begin(), myService.end(), myService.begin(), ::toupper);
+    if(services->find(myService) != services->end()) {
+        for(Credentials c : services->at(myService)) {
+            
+        }
     }
 }

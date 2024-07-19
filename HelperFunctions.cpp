@@ -8,7 +8,9 @@ Credentials inputCredentials(string service)
     string password;
     cout << "Enter login for " << service << ": ";
     cin >> login;
+    fflush(stdin);
     cout << "Enter password for " << service << ": ";
     cin >> password;
+    fflush(stdin);
     return Credentials{login, password};
 }

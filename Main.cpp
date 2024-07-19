@@ -11,7 +11,7 @@ int main()
 {
     int choice;
     do
-    {
+    {   
         system("cls");
         choice = menuLoop();
         system("cls");
@@ -37,7 +37,7 @@ int main()
             cout << "Invalid choice" << endl;
             break;
         }
-    } while (choice != 6);
+    } while (choice != 5);
     return 0;
 }
 

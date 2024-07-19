@@ -1,21 +1,26 @@
 #ifndef PASSWORDMANAGER_H_
 #define PASSWORDMANAGER_H_
 
-#include "Credentials.hpp"
+#pragma once
+#include "HelperFunctions.hpp"
 #include <unordered_map>
 #include <memory>
+#include <vector>
 
-using namespace std;
-
-class PasswordManager {
+class PasswordManager
+{
 private:
-    unique_ptr<unordered_map<string, vector<Credentials>>> services;
-    
+    unique_ptr<unordered_map<string, std::vector<Credentials>>> services;
+
 public:
     PasswordManager();
     ~PasswordManager();
-    vector<Credentials> getCredentials(string service);
-    void setCredentials(string service, Credentials credentials);
+    void setCredentials(std::string service, Credentials credentials);
+    void displayAllServices();
+    void displayOneService(std::string service);
+    void AddService(std::string service);
+    void AddCredentials();
+    void getServices();
 };
 
 // PasswordManager::PasswordManager()
@@ -27,7 +32,7 @@ public:
 // }
 
 // Credentials PasswordManager:: getCredentials(string service) {
-    
+
 // }
 
 #endif

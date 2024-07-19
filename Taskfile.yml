@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  build:
+    desc: "Build the C++ project"
+    cmds:
+      - "g++ Main.cpp PasswordManager.cpp HelperFunctions.cpp -o test.exe"
+    generates:
+      - "output_file.exe"

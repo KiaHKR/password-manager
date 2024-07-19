@@ -6,7 +6,8 @@ using namespace std;
 // 8+ char
 // 1 upper case, numbers, symbols
 // no name, product, organization
-struct Credentials {
+struct Credentials
+{
     string login;
     string password;
 };

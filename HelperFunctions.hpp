@@ -12,6 +12,5 @@ void updatePassword(string *service);
 void updateLogin(string *service);
 string inputLogin();
 string inputPassword();
-void handleCredentialsUpdate(unordered_map<string, vector<Credentials>>* services);
-
+void handleCredentialsUpdate(shared_ptr<unordered_map<string, vector<Credentials>>> services, string* serviceName);
 #endif

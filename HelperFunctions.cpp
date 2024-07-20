@@ -36,6 +36,38 @@ string inputLogin() {
     return login;
 }
 
-void updatePassword(string* service) {
+void updatePassword(string *service) {
     
+}
+
+void updateLogin(string *service) {
+
+}
+
+void handleCredentialsUpdate(unordered_map<string, vector<Credentials>>* services, string* serviceName) {
+    int choice;
+    while(choice != 4) {
+        updateCredentialsSubMenu();
+        cout << "Enter Your Choice: " << endl;
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            updateLogin(serviceName);
+            break;
+        case 2:
+            updatePassword(serviceName);
+            break;
+        case 3:
+            
+            break;
+        case 4:
+            break;
+        default:
+            cout << "Invalid Choice" << endl;
+            break;
+        }
+        
+    }
 }

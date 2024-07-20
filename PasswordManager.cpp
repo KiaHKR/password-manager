@@ -1,9 +1,4 @@
 #include "PasswordManager.hpp"
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <ctype.h>
-#include <algorithm>
 
 using namespace std;
 
@@ -84,15 +79,16 @@ void PasswordManager::updateCredentials() {
     transform(myService.begin(), myService.end(), myService.begin(), ::toupper);
     // Credentials credentials = inputCredentials(myService);
     if(services->find(myService) != services->end()) {
+        handleCredentialsUpdate(getServices(), &myService);
     }
     else {
         cout << "Specified version Could not be found." << endl;
     }
 }
 
-unordered_map<string, vector<Credentials>>* PasswordManager::getServices() {
+shared_ptr<unordered_map<string, vector<Credentials>>> PasswordManager::getServices() {
    //Returns the pointer to the service hashmap.
    //.get() is used when smart pointers are used to return the pointer
    //Instead of traditional pointers using "return services" for example
-    return services.get();
+    return services;
 }

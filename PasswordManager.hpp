@@ -6,11 +6,16 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <ctype.h>
+#include <algorithm>
 
 class PasswordManager
 {
 private:
-    unique_ptr<unordered_map<string, std::vector<Credentials>>> services;
+    shared_ptr<unordered_map<string, std::vector<Credentials>>> services;
 
 public:
     PasswordManager();
@@ -20,7 +25,7 @@ public:
     void deleteCredentials(std::string service, Credentials credentials);
     void displayAllServices();
     void displayOneService(std::string service);
-    unordered_map<string, vector<Credentials>>* getServices();
+    shared_ptr<unordered_map<string, vector<Credentials>>> getServices();
 };
 
 // PasswordManager::PasswordManager()

@@ -10,10 +10,11 @@ using namespace std;
 int main()
 {
     PasswordManager pm;
-    while(1) {
-        pm.displayAllServices();
-        pm.addNewCredentials();
-    }    
+    cout << pm.getServices()->at("Google").size() << endl;
+    // while(1) {
+    //     pm.displayAllServices();
+    //     pm.addNewCredentials();
+    // }    
     return 0;
 }
 
@@ -73,17 +74,25 @@ void PasswordManager::addNewCredentials()
     }
 }
 
-
+// Get the name of the service to update
+// Ask the user what they want to change
 void PasswordManager::updateCredentials() {
     string myService;
     cout << "Enter Service You Want to Modify: " << endl;
     getline(cin, myService);
     fflush(stdin);
-    Credentials credentials = inputCredentials(myService);
     transform(myService.begin(), myService.end(), myService.begin(), ::toupper);
+    // Credentials credentials = inputCredentials(myService);
     if(services->find(myService) != services->end()) {
-        for(Credentials c : services->at(myService)) {
-            
-        }
     }
+    else {
+        cout << "Specified version Could not be found." << endl;
+    }
+}
+
+unordered_map<string, vector<Credentials>>* PasswordManager::getServices() {
+   //Returns the pointer to the service hashmap.
+   //.get() is used when smart pointers are used to return the pointer
+   //Instead of traditional pointers using "return services" for example
+    return services.get();
 }

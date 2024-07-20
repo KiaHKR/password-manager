@@ -1,5 +1,5 @@
-#ifndef PASSWORDMANAGER_H_
-#define PASSWORDMANAGER_H_
+#ifndef PASSWORDMANAGER_HPP_
+#define PASSWORDMANAGER_HPP_
 
 #pragma once
 #include "HelperFunctions.hpp"
@@ -20,7 +20,7 @@ public:
     void deleteCredentials(std::string service, Credentials credentials);
     void displayAllServices();
     void displayOneService(std::string service);
-    void getServices();
+    unordered_map<string, vector<Credentials>>* getServices();
 };
 
 // PasswordManager::PasswordManager()

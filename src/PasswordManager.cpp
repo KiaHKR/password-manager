@@ -92,15 +92,16 @@ void PasswordManager::deleteCredentials()
 
     if (services->find(serviceName) != services->end())
     {
-        for (size_t i = 0; i < services->at(serviceName); i++)
-        {
-            /* code */
-        }
+        handleCredentialsDeletion(services, serviceName);
     }
     else
     {
         cout << "Service not found." << endl;
     }
+}
+
+void PasswordManager::deleteService() {
+    
 }
 
 shared_ptr<unordered_map<string, vector<Credentials>>> PasswordManager::getServices()

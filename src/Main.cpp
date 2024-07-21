@@ -25,7 +25,6 @@ int main()
             pm.displayAllServices(); // Wait for the user to press Enter
             break;
         case 2:
-            cout << "Display Credentials in 1 service" << endl;
             pm.displayOneService();
             break;
         case 3:
@@ -50,7 +49,7 @@ int main()
             cin.ignore(INT_MAX, '\n');
             break;
         }
-        cout << "Press Enter to continue...";
+        cout << "Press Enter to continue..." << endl;
         cin.ignore(); // Clear the newline character left in the buffer
         fflush(stdin);
     } while (choice != 7);
@@ -69,5 +68,6 @@ int menuLoop()
     cout << "7. Exit" << endl;
     cout << "Enter your choice: ";
     cin >> choice;
+    fflush(stdin);
     return choice;
 }

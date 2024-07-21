@@ -2,27 +2,13 @@
 
 using namespace std;
 
-int main()
-{
-    PasswordManager pm;
-    // cout << pm.getServices()->at("Google").size() << endl;
-    // while (1)
-    // {
-    //     pm.displayAllServices();
-    //     pm.addNewCredentials();
-    // }
-    // return 0;
-    string name = "Google";
-    // printCredentials(pm.getServices(),&name);
-}
-
 PasswordManager::PasswordManager() : services(make_unique<unordered_map<string, vector<Credentials>>>())
 {
 
     services = make_unique<unordered_map<string, vector<Credentials>>>();
-    services->insert({"Google", {Credentials{"user1", "password1"}}});
-    services->at("Google").push_back(Credentials{"user2", "password2"});
-    services->insert({"Facebook", {Credentials{"user1", "password1"}}});
+    services->insert({"GOOGLE", {Credentials{"user1", "password1"}}});
+    services->at("GOOGLE").push_back(Credentials{"user2", "password2"});
+    services->insert({"FACEBOOK", {Credentials{"user1", "password1"}}});
 }
 
 PasswordManager::~PasswordManager()
@@ -58,7 +44,7 @@ void PasswordManager::displayAllServices()
 void PasswordManager::addNewCredentials()
 {
     string myService = getServiceName();
-    Credentials credentials = inputCredentials(&myService);                       // Input credentials
+    Credentials credentials = inputCredentials(myService);                       // Input credentials
     transform(myService.begin(), myService.end(), myService.begin(), ::toupper); // Transform string to upper case
     if (services->find(myService) != services->end())                            // If Service is found
     {
@@ -70,7 +56,6 @@ void PasswordManager::addNewCredentials()
     }
 }
 
-// Get the name of the service to update
 // Ask the user what they want to change
 void PasswordManager::updateCredentials()
 {
@@ -79,11 +64,42 @@ void PasswordManager::updateCredentials()
     // Credentials credentials = inputCredentials(myService);
     if (services->find(myService) != services->end()) // If service is found
     {
-
+        handleCredentialsUpdate(services, myService);
     }
     else
     {
         cout << "Specified service could not be found." << endl;
+    }
+}
+
+void PasswordManager::displayOneService()
+{
+    string serviceName = getServiceName();
+    transform(serviceName.begin(), serviceName.end(), serviceName.begin(), ::toupper); // Transform string to upper case
+
+    for (int i = 0; i < services->at(serviceName).size(); i++)
+    {
+        cout << serviceName << ": " << i + 1 << ". " << endl;
+        cout << "Login: " << services->at(serviceName).at(i).login << endl;
+        cout << "Password: " << services->at(serviceName).at(i).password << endl;
+    }
+}
+
+void PasswordManager::deleteCredentials()
+{
+    string serviceName = getServiceName();
+    transform(serviceName.begin(), serviceName.end(), serviceName.begin(), ::toupper); // Transform string to upper case
+
+    if (services->find(serviceName) != services->end())
+    {
+        for (size_t i = 0; i < services->at(serviceName); i++)
+        {
+            /* code */
+        }
+    }
+    else
+    {
+        cout << "Service not found." << endl;
     }
 }
 

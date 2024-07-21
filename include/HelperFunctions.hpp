@@ -9,8 +9,8 @@
 #include <iostream>
 #include <cstdio>
 
-Credentials inputCredentials(std::string* service);
+Credentials inputCredentials(std::string service);
 std::string getServiceName();
-void updateCredentialsSubMenu(); //what to modify
-void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string* serviceName);
+void updateCredentialsSubMenu(); // what to modify
+void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string serviceName);
 #endif

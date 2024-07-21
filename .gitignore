@@ -32,3 +32,6 @@
 *.app
 .task/checksum/build
 .vscode/tasks.json
+
+
+/build/*

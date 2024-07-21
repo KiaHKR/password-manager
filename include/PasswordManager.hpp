@@ -21,9 +21,10 @@ public:
     ~PasswordManager();
     void addNewCredentials();
     void updateCredentials();
-    void deleteCredentials(std::string service, Credentials credentials);
+    void deleteCredentials();
+    void deleteService();
     void displayAllServices();
-    void displayOneService(std::string service);
+    void displayOneService();
     std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> getServices();
 };
 

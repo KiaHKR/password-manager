@@ -2,6 +2,8 @@
 #include "HelperFunctions.hpp"
 #include <iostream>
 
+using namespace std;
+
 Credentials inputCredentials(string service)
 {
     string login;

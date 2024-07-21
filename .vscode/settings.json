@@ -55,6 +55,7 @@
         "xloctime": "cpp",
         "xmemory": "cpp",
         "iomanip": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "optional": "cpp"
     }
 }

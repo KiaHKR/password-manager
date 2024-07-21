@@ -1,6 +1,7 @@
-#include "Credentials.hpp"
-#include "HelperFunctions.hpp"
+#include "../include/HelperFunctions.hpp"
 #include <iostream>
+
+using namespace std;
 
 Credentials inputCredentials(string service)
 {
@@ -15,38 +16,43 @@ Credentials inputCredentials(string service)
     return Credentials{login, password};
 }
 
-void updateCredentialsSubMenu() {
+void updateCredentialsSubMenu()
+{
     cout << "1. Update Login" << endl;
     cout << "2. Update Password" << endl;
     cout << "3. Update Both" << endl;
     cout << "4. Return to Main Menu" << endl;
 }
 
-string inputPassword() {
+string inputPassword()
+{
     string password;
     cout << "Enter New Password to Update: " << endl;
     cin >> password;
     return password;
 }
 
-string inputLogin() {
+string inputLogin()
+{
     string login;
     cout << "Enter New Login to Update: " << endl;
     cin >> login;
     return login;
 }
 
-void updatePassword(string *service) {
-    
+void updatePassword(string *service)
+{
 }
 
-void updateLogin(string *service) {
-
+void updateLogin(string *service)
+{
 }
 
-void handleCredentialsUpdate(unordered_map<string, vector<Credentials>>* services, string* serviceName) {
+void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string *serviceName)
+{
     int choice;
-    while(choice != 4) {
+    while (choice != 4)
+    {
         updateCredentialsSubMenu();
         cout << "Enter Your Choice: " << endl;
         cin >> choice;
@@ -60,7 +66,7 @@ void handleCredentialsUpdate(unordered_map<string, vector<Credentials>>* service
             updatePassword(serviceName);
             break;
         case 3:
-            
+
             break;
         case 4:
             break;
@@ -68,6 +74,5 @@ void handleCredentialsUpdate(unordered_map<string, vector<Credentials>>* service
             cout << "Invalid Choice" << endl;
             break;
         }
-        
     }
 }

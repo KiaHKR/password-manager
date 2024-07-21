@@ -1,7 +1,6 @@
 #ifndef PASSWORDMANAGER_HPP_
 #define PASSWORDMANAGER_HPP_
 
-#pragma once
 #include "HelperFunctions.hpp"
 #include <unordered_map>
 #include <memory>
@@ -15,7 +14,7 @@
 class PasswordManager
 {
 private:
-    shared_ptr<unordered_map<string, std::vector<Credentials>>> services;
+    std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services;
 
 public:
     PasswordManager();
@@ -25,19 +24,7 @@ public:
     void deleteCredentials(std::string service, Credentials credentials);
     void displayAllServices();
     void displayOneService(std::string service);
-    shared_ptr<unordered_map<string, vector<Credentials>>> getServices();
+    std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> getServices();
 };
-
-// PasswordManager::PasswordManager()
-
-// :services(make_unique<unordered_map<string, Credentials>>()) {}
-
-// PasswordManager::~PasswordManager() {
-
-// }
-
-// Credentials PasswordManager:: getCredentials(string service) {
-
-// }
 
 #endif

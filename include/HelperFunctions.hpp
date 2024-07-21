@@ -6,12 +6,11 @@
 #include <iomanip>
 #include <memory>
 #include <vector>
+#include <iostream>
+#include <cstdio>
 
-Credentials inputCredentials(std::string service);
-void updateCredentialsSubMenu();
-void updatePassword(std::string *service);
-void updateLogin(std::string *service);
-std::string inputLogin();
-std::string inputPassword();
-void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string *serviceName);
+Credentials inputCredentials(std::string* service);
+std::string getServiceName();
+void updateCredentialsSubMenu(); //what to modify
+void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string* serviceName);
 #endif

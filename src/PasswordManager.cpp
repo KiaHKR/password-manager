@@ -5,13 +5,15 @@ using namespace std;
 int main()
 {
     PasswordManager pm;
-    cout << pm.getServices()->at("Google").size() << endl;
-    while (1)
-    {
-        pm.displayAllServices();
-        pm.addNewCredentials();
-    }
-    return 0;
+    // cout << pm.getServices()->at("Google").size() << endl;
+    // while (1)
+    // {
+    //     pm.displayAllServices();
+    //     pm.addNewCredentials();
+    // }
+    // return 0;
+    string name = "Google";
+    // printCredentials(pm.getServices(),&name);
 }
 
 PasswordManager::PasswordManager() : services(make_unique<unordered_map<string, vector<Credentials>>>())
@@ -55,11 +57,8 @@ void PasswordManager::displayAllServices()
 
 void PasswordManager::addNewCredentials()
 {
-    string myService;
-    cout << "Enter the Service Name: " << endl;
-    getline(cin, myService);
-    fflush(stdin);
-    Credentials credentials = inputCredentials(myService);                       // Input credentials
+    string myService = getServiceName();
+    Credentials credentials = inputCredentials(&myService);                       // Input credentials
     transform(myService.begin(), myService.end(), myService.begin(), ::toupper); // Transform string to upper case
     if (services->find(myService) != services->end())                            // If Service is found
     {
@@ -75,26 +74,21 @@ void PasswordManager::addNewCredentials()
 // Ask the user what they want to change
 void PasswordManager::updateCredentials()
 {
-    string myService;
-    cout << "Enter Service You Want to Modify: " << endl;
-    getline(cin, myService);
-    fflush(stdin);
+    string myService = getServiceName();
     transform(myService.begin(), myService.end(), myService.begin(), ::toupper);
     // Credentials credentials = inputCredentials(myService);
-    if (services->find(myService) != services->end())
+    if (services->find(myService) != services->end()) // If service is found
     {
-        handleCredentialsUpdate(getServices(), &myService);
+
     }
     else
     {
-        cout << "Specified version Could not be found." << endl;
+        cout << "Specified service could not be found." << endl;
     }
 }
 
 shared_ptr<unordered_map<string, vector<Credentials>>> PasswordManager::getServices()
 {
-    // Returns the pointer to the service hashmap.
-    //.get() is used when smart pointers are used to return the pointer
-    // Instead of traditional pointers using "return services" for example
+    // Returns the pointer to the service hashmap
     return services;
 }

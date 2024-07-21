@@ -1,78 +1,62 @@
 #include "../include/HelperFunctions.hpp"
-#include <iostream>
 
 using namespace std;
 
-Credentials inputCredentials(string service)
+Credentials inputCredentials(string* service)
 {
     string login;
     string password;
-    cout << "Enter login for " << service << ": ";
+    cout << "Enter login for " << *service << ": ";
     cin >> login;
     fflush(stdin);
-    cout << "Enter password for " << service << ": ";
+    cout << "Enter password for " << *service << ": ";
     cin >> password;
     fflush(stdin);
     return Credentials{login, password};
 }
 
-void updateCredentialsSubMenu()
-{
-    cout << "1. Update Login" << endl;
-    cout << "2. Update Password" << endl;
-    cout << "3. Update Both" << endl;
-    cout << "4. Return to Main Menu" << endl;
+string getServiceName() {
+    string myService;
+    cout << "Enter Service Name: " << endl;
+    getline(cin, myService);
+    fflush(stdin);
+    return myService;
 }
 
-string inputPassword()
-{
-    string password;
-    cout << "Enter New Password to Update: " << endl;
-    cin >> password;
-    return password;
-}
+//Prints out the Credentials in a specified service
+//This function is only called when the service exists
+//So error handling for if the service does not exist is not needed
+void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string* serviceName) {
+    vector<Credentials> cArray = services->at(*serviceName);
+    for(int i = 0; i < cArray.size(); i++) {
+        cout << i + 1 << ". " << endl;
+        cout << "Login: " << cArray.at(i).login << endl;
+        cout << "Password: " << cArray.at(i).password << endl;
+    }
 
-string inputLogin()
-{
-    string login;
-    cout << "Enter New Login to Update: " << endl;
-    cin >> login;
-    return login;
-}
-
-void updatePassword(string *service)
-{
-}
-
-void updateLogin(string *service)
-{
-}
-
-void handleCredentialsUpdate(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string *serviceName)
-{
     int choice;
-    while (choice != 4)
+    cout << "Enter Credential Number To Modify: ";
+    cin >> choice;
+    while(choice < 0 || choice > cArray.size()) {
+        
+    }
+
+    int subMenuChoice;
+    cout << "1. Update Login for " << *serviceName << endl;
+    cout << "2. Update Password for " << *serviceName << endl;
+    cout << "3. Update Login and Password for " << *serviceName << endl;
+    cout << "4. Return to Main Menu" << endl;
+    do
     {
-        updateCredentialsSubMenu();
-        cout << "Enter Your Choice: " << endl;
-        cin >> choice;
 
         switch (choice)
         {
         case 1:
-            updateLogin(serviceName);
             break;
-        case 2:
-            updatePassword(serviceName);
-            break;
-        case 3:
-
-            break;
-        case 4:
-            break;
+        
         default:
-            cout << "Invalid Choice" << endl;
             break;
         }
-    }
+    } while (subMenuChoice != 4);
+    
 }

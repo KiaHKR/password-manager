@@ -10,7 +10,7 @@
 class PasswordManager
 {
 private:
-    std::unique_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services;
+    unique_ptr<unordered_map<string, std::vector<Credentials>>> services;
 
 public:
     PasswordManager();

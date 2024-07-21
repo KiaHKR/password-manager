@@ -2,7 +2,6 @@
 #include <string>
 #include <cstdlib>
 #include <stdlib.h>
-#include <climits>
 
 using namespace std;
 
@@ -12,8 +11,10 @@ int main()
 {
     int choice;
     do
-    {
+    {   
+        system("cls");
         choice = menuLoop();
+        system("cls");
         switch (choice)
         {
         case 1:
@@ -34,17 +35,14 @@ int main()
             break;
         default:
             cout << "Invalid choice" << endl;
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
             break;
-        }   
+        }
     } while (choice != 5);
     return 0;
 }
 
 int menuLoop()
 {
-    cout << "\x1B[2J";
     int choice;
     cout << "1. Display all Services" << endl;
     cout << "2. Display one service" << endl;

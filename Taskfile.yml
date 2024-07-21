@@ -4,6 +4,6 @@ tasks:
   build:
     desc: "Build the C++ project"
     cmds:
-      - "g++ PasswordManager.cpp HelperFunctions.cpp -o test.exe"
+      - "g++ Main.cpp PasswordManager.cpp HelperFunctions.cpp -o test.exe"
     generates:
       - "output_file.exe"

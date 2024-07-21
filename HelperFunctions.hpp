@@ -4,6 +4,6 @@
 #include "Credentials.hpp"
 #include <string>
 
-Credentials inputCredentials(std::string service);
+Credentials inputCredentials(string service);
 
 #endif

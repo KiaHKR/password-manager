@@ -43,17 +43,19 @@ void PasswordManager::displayAllServices()
 
 void PasswordManager::addNewCredentials()
 {
-    string myService = getServiceName();
-    Credentials credentials = inputCredentials(myService);                       // Input credentials
-    transform(myService.begin(), myService.end(), myService.begin(), ::toupper); // Transform string to upper case
-    if (services->find(myService) != services->end())                            // If Service is found
+    string serviceName = getServiceName();
+    Credentials credentials = inputCredentials(serviceName);                       // Input credentials
+    transform(serviceName.begin(), serviceName.end(), serviceName.begin(), ::toupper); // Transform string to upper case
+    if (services->find(serviceName) != services->end())                            // If Service is found
     {
-        services->at(myService).push_back(credentials); // Add credentials to pre-existing service
+        services->at(serviceName).push_back(credentials); // Add credentials to pre-existing service
     }
     else
     {
-        services->insert({myService, {credentials}}); // Create new service and add the credentials to it
+        cout << "Service not found. Will be added automatically." << endl;
+        services->insert({serviceName, {credentials}}); // Create new service and add the credentials to it
     }
+    cout << "Credentials at " << serviceName << " Added Successfully." << endl;
 }
 
 // Ask the user what they want to change
@@ -101,7 +103,15 @@ void PasswordManager::deleteCredentials()
 }
 
 void PasswordManager::deleteService() {
-    
+    string serviceName = getServiceName();
+    transform(serviceName.begin(), serviceName.end(), serviceName.begin(), ::toupper);
+    if(services->find(serviceName) != services->end()) {
+        services->erase(serviceName);
+        cout << "Service " << serviceName << " Removed Successfully." << endl;
+    }
+    else {
+        cout << "Service " << serviceName << " Not found." << endl;
+    }
 }
 
 shared_ptr<unordered_map<string, vector<Credentials>>> PasswordManager::getServices()

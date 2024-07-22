@@ -17,6 +17,8 @@ Credentials inputCredentials(string service)
     return Credentials{login, password};
 }
 
+//User inputs the service name that they want to use
+//And returns that service name
 string getServiceName()
 {
     string myService;
@@ -55,29 +57,37 @@ void handleCredentialsUpdate(shared_ptr<unordered_map<string, vector<Credentials
         cin >> choice;
         fflush(stdin);
     }
+    updateCredentialsSubMenu(services, serviceName, choice);
+}
 
+void updateCredentialsSubMenu(shared_ptr<unordered_map<string, vector<Credentials>>> services, string serviceName, int choice) {
     int subMenuChoice;
+    Credentials myCred;
     cout << "1. Update Login for " << serviceName << endl;
     cout << "2. Update Password for " << serviceName << endl;
     cout << "3. Update Login and Password for " << serviceName << endl;
     cout << "4. Return to Main Menu" << endl;
     cin >> subMenuChoice;
-    Credentials myCred;
+    fflush(stdin);
     do
     {
         switch (subMenuChoice)
         {
         case 1:
             updateLogin(services, serviceName, choice);
+            cout << "Login Successfully Updated" << endl;
             break;
         case 2:
             updatePassword(services, serviceName, choice);
+            cout << "Password Successfully Updated" << endl;
             break;
         case 3:
             myCred = inputCredentials(serviceName);
             services->at(serviceName).at(choice - 1) = myCred;
+            cout << "Login and Password Successfully Updated" << endl;
             break;
         case 4:
+            cout << "No changes has been made. Returning to main menu..." << endl;
             return;
             break;
         default:
@@ -130,4 +140,5 @@ void handleCredentialsDeletion(std::shared_ptr<std::unordered_map<std::string, s
     
     auto index = services->at(serviceName).begin() + (choice - 1);
     services->at(serviceName).erase(index);
+    cout << "Credentials at Service " << serviceName << " Has been successfully deleted." << endl;
 }

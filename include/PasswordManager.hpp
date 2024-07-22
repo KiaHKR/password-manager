@@ -1,6 +1,4 @@
-#ifndef PASSWORDMANAGER_HPP_
-#define PASSWORDMANAGER_HPP_
-
+#pragma once
 #include "HelperFunctions.hpp"
 #include <unordered_map>
 #include <memory>
@@ -27,5 +25,3 @@ public:
     void displayOneService();
     std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> getServices();
 };
-
-#endif

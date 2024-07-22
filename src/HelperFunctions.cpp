@@ -1,7 +1,4 @@
 #include "../include/HelperFunctions.hpp"
-#include <algorithm>
-#include <ctype.h>
-
 using namespace std;
 
 Credentials inputCredentials(string service)

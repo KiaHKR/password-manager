@@ -7,6 +7,8 @@
 #include <vector>
 #include <iostream>
 #include <cstdio>
+#include <algorithm>
+#include <ctype.h>
 
 Credentials inputCredentials(std::string service);
 std::string getServiceName();

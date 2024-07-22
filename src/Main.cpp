@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <climits>
 #include <../include/PasswordManager.hpp>
+#include <../include/FileManager.hpp>
 
 using namespace std;
 

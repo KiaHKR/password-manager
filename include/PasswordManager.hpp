@@ -16,7 +16,6 @@ private:
 
 public:
     PasswordManager();
-    ~PasswordManager();
     void addNewCredentials();
     void updateCredentials();
     void deleteCredentials();

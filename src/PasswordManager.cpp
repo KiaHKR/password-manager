@@ -10,10 +10,6 @@ PasswordManager::PasswordManager() : services(make_shared<unordered_map<string, 
     services->insert({"FACEBOOK", {Credentials{"user1", "password1"}}});
 }
 
-PasswordManager::~PasswordManager() {
-
-}
-
 void PasswordManager::displayAllServices()
 {
     int entryIndex = 1; // Initialize entry index for each service

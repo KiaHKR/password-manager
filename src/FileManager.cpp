@@ -2,16 +2,16 @@
 
 using namespace std;
 
-class FileManager
+FileManager::FileManager(unique_ptr<FILE> file, shared_ptr<unordered_map<string, vector<Credentials>>> services)
 {
-private:
-    
-public:
-    FileManager(/* args */);
-    ~FileManager();
-};
+    file = make_unique<FILE>();
+    services = make_shared<unordered_map<string, vector<Credentials>>>();
+}
 
-FileManager::FileManager(/* args */)
-{
-    auto file = make_shared<FILE>;
+void writeToFile(shared_ptr<unordered_map<string, vector<Credentials>>> services) {
+
+}
+
+shared_ptr<unordered_map<string, vector<Credentials>>> readFromFile() {
+    
 }

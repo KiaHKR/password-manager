@@ -5,9 +5,10 @@
 class FileManager
 {
 private:
-    std::shared_ptr<std::FILE> file;
+    std::unique_ptr<std::FILE> file;
 public:
     std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> readFromFile();
-    void writeToFile(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> service);
-    FileManager();
+    void writeToFile(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services);
+    FileManager(std::unique_ptr<FILE> file, std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services);
+    ~FileManager();
 };

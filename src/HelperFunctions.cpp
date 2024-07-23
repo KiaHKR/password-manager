@@ -113,13 +113,14 @@ void updatePassword(shared_ptr<unordered_map<string, vector<Credentials>>> servi
 }
 
 void handleCredentialsDeletion(std::shared_ptr<std::unordered_map<std::string, std::vector<Credentials>>> services, std::string serviceName) {
-    
+    // Displays all credentials in a service
     for (int i = 0; i < services->at(serviceName).size(); i++)
     {
         cout << serviceName << ": " << i + 1 << ". " << endl;
         cout << "Login: " << services->at(serviceName).at(i).login << endl;
         cout << "Password: " << services->at(serviceName).at(i).password << endl;
     }
+    // Handles which credentials to delete
     int choice;
     cout << "Enter Credential Number To Delete (Type -1 to cancel): ";
     cin >> choice;
@@ -134,8 +135,11 @@ void handleCredentialsDeletion(std::shared_ptr<std::unordered_map<std::string, s
         cin >> choice;
         fflush(stdin);
     }
-    
     auto index = services->at(serviceName).begin() + (choice - 1);
     services->at(serviceName).erase(index);
+    if(services->at(serviceName).size() < 1) {
+        services->erase(serviceName);
+    }
     cout << "Credentials at Service " << serviceName << " Has been successfully deleted." << endl;
+    cout << "No more credentials stored at service " << serviceName << ". Service has been deleted" << endl;
 }

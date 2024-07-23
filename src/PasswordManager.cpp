@@ -2,13 +2,16 @@
 
 using namespace std;
 
-PasswordManager::PasswordManager() : services(make_unique<unordered_map<string, vector<Credentials>>>())
+PasswordManager::PasswordManager() : services(make_shared<unordered_map<string, vector<Credentials>>>())
 {
-
-    services = make_unique<unordered_map<string, vector<Credentials>>>();
+    services = make_shared<unordered_map<string, vector<Credentials>>>();
     services->insert({"GOOGLE", {Credentials{"user1", "password1"}}});
     services->at("GOOGLE").push_back(Credentials{"user2", "password2"});
     services->insert({"FACEBOOK", {Credentials{"user1", "password1"}}});
+}
+
+PasswordManager::~PasswordManager() {
+
 }
 
 void PasswordManager::displayAllServices()

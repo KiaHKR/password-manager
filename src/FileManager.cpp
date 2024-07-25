@@ -8,10 +8,10 @@ FileManager::FileManager(unique_ptr<FILE> file, shared_ptr<unordered_map<string,
     services = make_shared<unordered_map<string, vector<Credentials>>>();
 }
 
-void writeToFile(shared_ptr<unordered_map<string, vector<Credentials>>> services) {
-
+void writeToFile(shared_ptr<unordered_map<string, vector<Credentials>>> services)
+{
 }
 
-shared_ptr<unordered_map<string, vector<Credentials>>> readFromFile() {
-    
+shared_ptr<unordered_map<string, vector<Credentials>>> readFromFile()
+{
 }

@@ -1,19 +1,22 @@
-cmake_minimum_required(VERSION 3.1...3.29)
-
+cmake_minimum_required(VERSION 3.10)
 
 project(
-  ModernCMakeExample
+  PasswordManager
   VERSION 1.0
-  LANGUAGES CXX)
-
-
-  set(SOURCE_FILES
-  src/math/3d_circle.cpp
-  src/path_finding.cpp
-  src/spacial_conv.cpp
-  src/mark2_0_fixed.cpp
-  src/motors.cpp
-  src/robot.cpp
+  LANGUAGES CXX
 )
 
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+set(SOURCE_FILES
+  src/Main.cpp
+  src/PasswordManager.cpp
+  src/FileManager.cpp
+  src/HelperFunctions.cpp
+)
+
+find_package(Boost REQUIRED CONFIG)
+
 add_executable(PasswordManager ${SOURCE_FILES})
+
+target_link_libraries(PasswordManager PRIVATE Boost)

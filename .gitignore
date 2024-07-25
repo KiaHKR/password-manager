@@ -35,3 +35,7 @@
 
 
 /build/*
+
+.vs
+**/out
+.vscode/settings.json
